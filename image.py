@@ -53,8 +53,16 @@ class image(object):
         return (x, int(y + amplitude * math.sin(2 * math.pi * x / frequency)))
 
     @_filter
-    def glass(self, x, y, x_c, x_y):
+    def glass(self, x, y, x_c, y_c):
         return (random.randint(-4, 4) + x, random.randint(-4, 4) + y)
+
+    def tile(self, cols = 100, rows = 100):
+        s_height = self._surface.get_height()
+        s_width = self._surface.get_width()
+        for y in range(0, s_height, s_height // rows):
+            for x in range(0, s_width, s_width // cols):
+                pygame.draw.line(self._surface, (0, 0, 0), (0, y), (s_width, y))
+                pygame.draw.line(self._surface, (0, 0, 0), (x, 0), (x, s_height))
 
     def scale(self, width, height):
         trt = pygame.Surface((width, height))
@@ -71,5 +79,5 @@ class image(object):
         self._surface = trt 
 
     def random_filter(self):
-        seq = [self.swirl, self.wave, self.rotate, self.glass]
+        seq = [self.swirl, self.wave, self.rotate, self.glass, self.tile]
         return random.choice(seq)
