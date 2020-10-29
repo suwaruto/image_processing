@@ -4,8 +4,8 @@ import glob
 from random import choice
 
 def find_images():
-    return glob.glob('*.png') + glob.glob('*.jpg')
-
+    return glob.glob('images/*.jpg') + glob.glob('images/*.png')
+        
 def main():
     paths = find_images()
     height = 600
@@ -14,7 +14,7 @@ def main():
 
     running = True
     while running:
-        for event in pygame.event.get():
+        or event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
         img = image.image(choice(paths))

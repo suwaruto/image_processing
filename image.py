@@ -64,6 +64,10 @@ class image(object):
                 pygame.draw.line(self._surface, (0, 0, 0), (0, y), (s_width, y))
                 pygame.draw.line(self._surface, (0, 0, 0), (x, 0), (x, s_height))
 
+    # TODO
+    def fade(self, img):
+        pass
+
     def scale(self, width, height):
         trt = pygame.Surface((width, height))
         pxarr_trt = pygame.PixelArray(trt)
